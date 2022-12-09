@@ -1,3 +1,4 @@
+import { useContext } from "@/components/ContextProvider.jsx"
 import Page from "@/components/Page.jsx"
 import UserForm from "@/components/UserForm.jsx"
 import { useRouter } from "next/router.js"
@@ -14,9 +15,8 @@ export const getServerSideProps = ({ params }) => ({
 const UserEditPage = (props) => {
   const {
     params: { userId },
-    users,
   } = props
-  const { updateUser } = props
+  const { updateUser, users } = useContext()
   const router = useRouter()
   const handleSubmit = useCallback(
     (values) => {

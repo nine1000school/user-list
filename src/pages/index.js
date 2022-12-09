@@ -1,15 +1,16 @@
 import Button from "@/components/Button.jsx"
+import { useContext } from "@/components/ContextProvider.jsx"
 import Link from "@/components/Link.jsx"
 import Page from "@/components/Page.jsx"
 import { TrashIcon } from "@heroicons/react/24/solid"
 import { useCallback } from "react"
 
-const IndexPage = (props) => {
-  const { users, deleteUser } = props
+const IndexPage = () => {
+  const { users, deleteUser } = useContext()
   const handleClickDelete = useCallback(
     (event) => {
       const userId = Number.parseInt(
-        event.target.getAttribute("data-user-id"),
+        event.currentTarget.getAttribute("data-user-id"),
         10
       )
 

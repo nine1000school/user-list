@@ -1,17 +1,18 @@
+import { useContext } from "@/components/ContextProvider.jsx"
 import Page from "@/components/Page.jsx"
 import UserForm from "@/components/UserForm.jsx"
 import { useRouter } from "next/router.js"
 import { useCallback } from "react"
 
-const CreateUserPage = (props) => {
-  const { addUser } = props
+const CreateUserPage = () => {
+  const { createUser } = useContext()
   const router = useRouter()
   const handleSubmit = useCallback(
     (values) => {
-      addUser(values)
+      createUser(values)
       router.push("/")
     },
-    [router, addUser]
+    [router, createUser]
   )
 
   return (
